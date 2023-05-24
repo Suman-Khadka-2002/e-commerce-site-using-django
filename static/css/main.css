@@ -62,10 +62,14 @@ h1,h2,h3,h4,h5,h6{
 	width: 100px;
 }
 
-.form-inline{
+.form-field-1{
 	width:250px;
 	display: flex;
-    justify-content: center;
+	padding: 5px;
+}
+.form-field{
+	width:250px;
+	display: inline-block;
 	padding: 5px;
 }
 
