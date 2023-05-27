@@ -68,12 +68,25 @@
         </div>
     </div>
 
+    <!-- checks if the ordered item doesnot require shipping, it doesnot show shipping form -->
 <script>
     var shipping = '{{order.shipping}}'
 
     if (shipping == 'False'){
         document.getElementById('shipping-info').innerHTML = ''
     }
+
+    var form = document.getElementById('form')
+
+    form.addEventListener('submit', function(e){ /* On submit we trigger the function*/
+        e.preventDefault()  /* stops form from performing normal action*/
+        console.log('Form submitted...')
+        document.getElementById('form-button').classList.add('hidden')
+        document.getElementById('payment-info').classList.remove('hidden')
+
+
+    })
+
 </script>
 
 {% endblock content %}
