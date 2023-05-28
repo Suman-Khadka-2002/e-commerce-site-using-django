@@ -44,6 +44,8 @@
 
             <div class="box-element hidden" id="payment-info">
                 <small>Paypal Options</small>
+                <!-- creating payment button -->
+                <button id="make-payment">Make Payment</button>
             </div>
         </div>
 
@@ -87,6 +89,14 @@
 
     })
 
+    /* trigger payment action  */
+    document.getElementById('make-payment').addEventListener('click', function(e){
+        submitFormData()
+    })
+
+    function submitFormData() {
+        console.log('Payment button clicked...')
+    }
 </script>
 
 {% endblock content %}
