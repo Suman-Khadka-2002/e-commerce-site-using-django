@@ -12,7 +12,7 @@ class Customer(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
@@ -22,7 +22,7 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
     @property
     def imageURL(self):
         try:
@@ -40,7 +40,7 @@ class Order(models.Model):
 
     def __str__(self) -> str:
         return str(self.id)
-    
+
     @property
     def shipping(self):
         shipping= False
@@ -49,7 +49,7 @@ class Order(models.Model):
             if i.product.digital ==False:
                 shipping = True
         return shipping
-    
+
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
@@ -61,8 +61,6 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
-    
-
 
 
 class OrderItem(models.Model):
