@@ -84,4 +84,5 @@ def updateItem(request):
 # Process order view/url
 
 def processOrder(request):
+    print('Data: ', request.body)
     return JsonResponse('Payment complete!', safe=False)
