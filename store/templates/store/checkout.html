@@ -118,7 +118,7 @@
             'total': total,
         }
 
-        var userFormData = {
+        var shippingInfo = {
             'address': null,
             'city':null,
             'state':null,
@@ -137,20 +137,23 @@
             userFormData.email = form.email.value
         }
 
-        var url = '/process_order/'
+        /* sending POST data*/
+        var url = "/process_order/"  // set the url
+
         fetch(url, {
-            method: 'POST',
+            method: 'POST', //sending POST request
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken' : csrftoken,
+                'X-CSRFToken' : csrftoken, // sending csrf token
             },
-            body : JSON.stringify({'form':userFormData, 'shipping': shippingInfo}),
+            body : JSON.stringify({'form':userFormData, 'shipping': shippingInfo}), //sending objects for user form data and shipping info
         })
-        .then ((response) => response.json())
-        .then ((data) => {
+        // refresh the page
+        .then((response) => response.json())
+        .then((data) => {
             console.log('Success: ',data);
             alert('Transaction completed.');
-            window.location.href = "{%url 'store' %}"
+            window.location.href = "{% url 'store' %}" //send user back to the store
         })
 
     }
