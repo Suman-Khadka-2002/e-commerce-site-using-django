@@ -90,6 +90,7 @@ def processOrder(request):
 
     data = json.loads(request.body)
 
+    # for authenticated user
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
