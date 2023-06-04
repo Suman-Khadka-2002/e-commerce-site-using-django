@@ -6,7 +6,8 @@
     <div class="row">
         <div class="col-lg-6">
             <div id="form-wrapper" class="box-element" >
-                <form id="form" action="">
+                <form id="form">
+                    {% csrf_token %}
                     <div id="user-info">
                         <div class="form-field">
 							<input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -73,7 +74,7 @@
     <!-- checks if the ordered item doesnot require shipping, it doesnot show shipping form -->
 <script>
     var shipping = '{{order.shipping}}'
-    var total = '{{order.get_cart_total|floatformat:2}}'
+    var total = '{{order.get_cart_total}}'
 
     if (shipping == 'False'){
         document.getElementById('shipping-info').innerHTML = ''
@@ -94,6 +95,9 @@
     }
 
     var form = document.getElementById('form')
+
+    csrftoken = form.getElementsByTagName("input")[0].value
+    console.log('Newtoken: ', form.getElementsByTagName("input")[0].value)
 
     form.addEventListener('submit', function(e){ /* On submit we trigger the function*/
         e.preventDefault()  /* stops form from performing normal action*/
