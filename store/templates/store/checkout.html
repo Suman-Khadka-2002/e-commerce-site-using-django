@@ -46,7 +46,7 @@
             <div class="box-element hidden" id="payment-info">
                 <small>Paypal Options</small>
                 <!-- creating payment button -->
-                <button id="make-payment">Make Payment</button>
+                <button id="make-payment">Pay with Esewa</button>
             </div>
         </div>
 
@@ -156,8 +156,12 @@
         .then((response) => response.json())
         .then((data) => {
             console.log('Success: ',data);
-            alert('Transaction completed.');
-            window.location.href = "{% url 'store' %}" //send user back to the store
+
+            var esewa = "https://esewa.com.np";
+            window.location.href = esewa
+
+            //alert('Transaction completed.');
+            //window.location.href = "{% url 'store' %}" //send user back to the store
         })
 
     }
