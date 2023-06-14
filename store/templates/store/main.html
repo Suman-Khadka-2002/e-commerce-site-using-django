@@ -62,7 +62,14 @@
 
             </ul>
             <div class="form-field-1">
-                <a href="#"class="btn btn-warning">Login</a>
+
+            {% if user.is_authenticated %}
+              <p>Welcome, {{user}}!</p>
+            {% else %}
+              <a href="{% url 'checkout' %}"class="btn btn-warning">Login</a>
+            {% endif %}
+
+              <a href="{% url 'cart' %}">
                 <a href="{% url 'cart' %}">
                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">
                 </a>
